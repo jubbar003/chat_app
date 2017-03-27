@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Jquery Mobile</title>
+
+<!-- Include meta tag to ensure proper rendering and touch zooming -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<!-- Include the jQuery library -->
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include the jQuery Mobile library -->
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<style>
+  .ui-content {
+  margin-top:150px;
+  margin-left:500px;
+  margin-right:500px;
+}
+
+/* For mobile screens */
+@media screen and (max-width: 480px) {
+    .ui-content{
+		margin:0px;
+}
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div data-role="page" id="login">
+<div data-role="header"><h1>Welcome to the Streamline Chat App</h1></div>
+  <div data-role="main" class="ui-content">
+   <h3>Log in to start chatting</h3>
+    <form method="post" action="login.php" data-ajax="false">
+     <label for="username" >Username:</label>
+     <input type="text" id="username" name="username">
+     <label for="username" >Password:</label>
+     <input type="password" id="password" name="password">
+     <input type="submit" data-inline="true" value="Submit">
+    </form>
+    
+    <h4>New to streamline? <a href="#signup" >Sign up now!!!</a></h4>
+  </div>
+</div>
+<div data-role="page" id="signup">
+<div data-role="header"><h1>Welcome to the Streamline Chat App</h1></div>
+  <div data-role="main" class="ui-content">
+   <h3>Setup your account to get chatting</h3>
+    <form method="post" action="signup.php" data-ajax="false">
+     <label for="username" >Your Username:</label>
+     <input type="text" id="user_name" name="user_name">
+     <label for="username" >Your Password:</label>
+     <input type="password" id="pwd" name="pwd">
+     <label for="bio" >Tell us a little about yourself (Only 230 characters allowed):</label>
+	 <textarea type="text" id="bio" name="bio" placeholder="Message here..." maxlength="230"></textarea>
+     <label id="char_left"></label>
+     <input type="submit" data-inline="true" value="Submit">
+    </form>
+    
+    <h4>Already have an account? Log in <a href="#login">here.</a></h4>
+  </div>
+</div>
+<script>
+	$(document).on("pageinit",function(event){
+		var maxLength = 230;
+		$('textarea').keydown(function(){
+			var length = $(this).val().length;
+			var length = maxLength - length;
+			if(length != 0){
+				$('#char_left').text(length + " characters remaining");
+			}else{
+				$('#char_left').text("Character limit has been exceeded.");
+			}
+		})
+	});
+</script>
+</body>
+</html>
