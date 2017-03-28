@@ -1,4 +1,7 @@
 <?php
+
+require("config.php");
+
 class DB {
 	public function getName($table, $id, $return, $idColumn){
 		

@@ -84,10 +84,6 @@ $db = new DB();
 		 echo "<h3>Chatting with: " . $chatmate ."</h3>";
 		 echo "<h3>About " . $chatmate ."</h3>";
 		 echo "<p>" . $chat_mate_bio . "</p>";
-		 /*if($db->getName($table2, $chat_id, "chat_id", "chat_id") == 0){
-			 //chat does not appear
-			 $chat_id = $chat_id_temp;
-		 }*/
 		 //if there is any history, display it all, else display message of no other chats.
 		 // you are all done
 	 }else{
@@ -99,16 +95,21 @@ $db = new DB();
    <div id="chats"></div>
    <textarea cols="40" rows="8" name="msg" id="msg" placeholder="Message here..."></textarea>
    <input type="button" data-inline="true" id="submit" value="Submit">
-  </div>
-  <div data-role="panel" id="panel1">
-  <p style="color: #08A049">Currently logged in as <?php echo $_SESSION["user"]; ?></p>
-  <h2>Members Online</h2>
+   
   <input type="hidden" value="<?php echo $_SESSION["user"]; ?>" id="user"/>
   <input type="hidden" value="<?php echo $chatmate ?>" id="chatmate"/>
   <input type="hidden" value="<?php echo $chat_id ?>" id="chat_id"/>
+  
+  </div>
+  
+  <div data-role="panel" id="panel1">
+  <p style="color: #08A049">Currently logged in as <?php echo $_SESSION["user"]; ?></p>
+  <h2>Members Online</h2>
+  
   <form class="ui-filterable">
   	<input id="member_filter" data-type="search" placeholder="Search for members...">
   </form>
+  
   <ol data-role="listview" data-inset="true" id="m_on" data-filter="true" data-input="#member_filter" data-autodividers="true">
   	<li data-role="list-divider"></li>
   	<?php
@@ -131,7 +132,9 @@ $db = new DB();
 			}
 	?>
   </ol>
+  
   <h2>Previous Chats</h2>
+  
   <ol data-role="listview" data-inset="true">
   	<li data-role="list-divider"></li>
   	<li>No previous chats</li>
@@ -147,7 +150,7 @@ $table = "user";
 	
 	$(document).on("pageinit",function(event){
 		setInterval(update, 10000);
-		setInterval(getMessage, 20000);
+		//setInterval(getMessage, 20000);
 		
 		$( "#submit" ).bind( "click", function() {
 			//get message
