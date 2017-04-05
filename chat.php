@@ -161,7 +161,7 @@ $table = "user";
 			var user = $("#user").val();
 			if(chat_id != ""){
 				//send message
-			  sendMessage(msg_display, chat_id, user);	
+			  sendMessage(msg_display, chat_id, user);
 			}else{
 				alert("Please select a user to chat with");
 				$("#msg").val("");

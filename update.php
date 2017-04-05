@@ -1,11 +1,9 @@
 <?php
 session_start(); 
 if ($_SESSION["user"]) {
+
+	require("config.php");
 	
-	$servername = "localhost";
-$user_name = "1285634";
-$pass = "helloworld";
-$dbname = "1285634";
 $table = "user";
 
 
