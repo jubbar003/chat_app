@@ -121,7 +121,7 @@ $db = new DB();
 		  while($row = mysqli_fetch_assoc($result)) {
 		foreach ( $row as $key => $value){
 			if($value != $_SESSION["user"]){
-				echo "<li>" . $value . "</li>";
+				echo "<li style='cursor: pointer;'>" . $value . "</li>";
 			}elseif($value == $_SESSION["user"] && $count == 1){
 				echo "No members online.";
 			}
@@ -137,7 +137,7 @@ $db = new DB();
   
   <ol data-role="listview" data-inset="true">
   	<li data-role="list-divider"></li>
-  	<li>No previous chats</li>
+  	<li style="cursor: pointer;">No previous chats</li>
   	<?php
 $table = "user";
 	  
@@ -204,7 +204,7 @@ $table = "user";
 		
 		function getMessage(msg_id){
 		   $.ajax({
-		 type: 'POST',
+		   type: 'POST',
 		   url: "get_message.php",
 		   data: {msg_id:msg_id},
 		   dataType: "json",
